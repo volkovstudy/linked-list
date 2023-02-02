@@ -19,6 +19,7 @@ public:
     bool isEmpty();
 
     void pushBack(T data);
+    void pop();
 };
 
 template<typename T>
@@ -64,6 +65,28 @@ void LinkedList<T>::pushBack(T data) {
     _tail = node;
 
     _size++;
+}
+
+template<typename T>
+void LinkedList<T>::pop() {
+    if (isEmpty()) return;
+
+    if (_size == 1) {
+        _head = nullptr;
+        _tail = nullptr;
+
+        _size = 0;
+
+        return;
+    }
+
+    Node<T>* beforeTail = _tail->previous;
+    beforeTail->next = nullptr;
+
+    delete _tail;
+    _size--;
+
+    _tail = beforeTail;
 }
 
 #endif
