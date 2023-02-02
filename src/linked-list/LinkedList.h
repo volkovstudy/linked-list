@@ -10,6 +10,9 @@ struct Node {
 
 template<typename T>
 class LinkedList {
+private:
+    Node<T>* _head;
+    Node<T>* _tail;
 };
 
 
