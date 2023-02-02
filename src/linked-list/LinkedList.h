@@ -13,6 +13,8 @@ class LinkedList {
 private:
     Node<T>* _head;
     Node<T>* _tail;
+
+    int _size = 0;
 public:
     void pushBack(T data);
 };
@@ -27,6 +29,8 @@ void LinkedList<T>::pushBack(T data) {
         _head = node;
         _tail = _head;
 
+        _size = 1;
+
         return;
     }
 
@@ -39,6 +43,8 @@ void LinkedList<T>::pushBack(T data) {
         _head->next = node;
         _tail = node;
 
+        _size++;
+
         return;
     }
 
@@ -49,6 +55,8 @@ void LinkedList<T>::pushBack(T data) {
     _tail->next = node;
 
     _tail = node;
+
+    _size++;
 }
 
 #endif
