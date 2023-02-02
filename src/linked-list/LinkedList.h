@@ -20,6 +20,8 @@ public:
 
     void pushBack(T data);
     void pop();
+
+    void erase(int start, int end);
 };
 
 template<typename T>
@@ -87,6 +89,47 @@ void LinkedList<T>::pop() {
     _size--;
 
     _tail = beforeTail;
+}
+
+template<typename T>
+void LinkedList<T>::erase(int start, int end) {
+    /* end doesn't be erased */
+
+    if (isEmpty()) return;
+
+    if (start > end) return;
+
+    Node<T>* beforeStartNode = _head;
+    Node<T>* endNode = _head;
+    Node<T>* currentNode = _head;
+
+    int sizeBeforeErasing = _size;
+    for (int i = 0; i < sizeBeforeErasing; ++i) {
+        if (start == i) {
+            beforeStartNode = currentNode->previous;
+        }
+        if (end == i) {
+            endNode = currentNode;
+            break;
+        }
+
+        if (i >= start) {
+            Node<T>* tempNode = currentNode->next;
+            delete currentNode;
+            _size--;
+            currentNode = tempNode;
+        } else {
+            currentNode = currentNode->next;
+        }
+    }
+
+    if (beforeStartNode == nullptr) {
+        _head = endNode;
+        return;
+    }
+
+    beforeStartNode->next = endNode;
+    endNode->previous = beforeStartNode;
 }
 
 #endif
