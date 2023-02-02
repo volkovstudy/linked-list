@@ -16,8 +16,15 @@ private:
 
     int _size = 0;
 public:
+    bool isEmpty();
+
     void pushBack(T data);
 };
+
+template<typename T>
+bool LinkedList<T>::isEmpty() {
+    return _size == 0 && _head == nullptr;
+}
 
 template<class T>
 void LinkedList<T>::pushBack(T data) {
