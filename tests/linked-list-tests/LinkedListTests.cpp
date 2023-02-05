@@ -27,7 +27,7 @@ int main() {
 }
 
 template<class T>
-LinkedList<T>& givenListWithThreeItems(std::list<T> data) {
+LinkedList<T>& givenListWithItems(std::list<T> data) {
     LinkedList<T>* list = new LinkedList<T>;
 
     for (const T value: data) {
@@ -64,7 +64,7 @@ void shouldReturnThreeWhenInListThreeItems() {
 }
 
 void shouldReturnValueByIndex() {
-    LinkedList<int> list = givenListWithThreeItems(std::list<int>{1, 2, 3});
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3});
 
     assert(list.at(0) == 1);
     assert(list.at(1) == 2);
@@ -72,7 +72,7 @@ void shouldReturnValueByIndex() {
 }
 
 void shouldThrowExceptionWhenGettingValueWithInvalidIndex() {
-    LinkedList<int> list = givenListWithThreeItems(std::list<int>{1, 2, 3});
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3});
 
     try {
         list.at(5);
