@@ -159,6 +159,7 @@ void LinkedList<T>::erase(int start, int end) {
 
     if (beforeStartNode == nullptr) {
         _head = endNode;
+        _head->previous = nullptr;
         return;
     }
 
