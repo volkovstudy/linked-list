@@ -6,11 +6,14 @@
 
 #include "linked-list/LinkedList.h"
 
+using namespace std;
+
 void shouldReturnTrueWhenListIsEmpty();
 void shouldReturnFalseWhenListIsNotEmpty();
 void shouldReturnThreeWhenInListThreeItems();
 
 void shouldReturnValueByIndex();
+void shouldThrowExceptionWhenGettingValueWithInvalidIndex();
 
 int main() {
     shouldReturnTrueWhenListIsEmpty();
@@ -19,6 +22,7 @@ int main() {
     shouldReturnThreeWhenInListThreeItems();
 
     shouldReturnValueByIndex();
+    shouldThrowExceptionWhenGettingValueWithInvalidIndex();
 
     return 0;
 }
@@ -66,4 +70,16 @@ void shouldReturnValueByIndex() {
     assert(list.at(0) == 1);
     assert(list.at(1) == 2);
     assert(list.at(2) == 3);
+}
+
+void shouldThrowExceptionWhenGettingValueWithInvalidIndex() {
+    LinkedList<int> list = givenListWithThreeItems(std::list<int>{1, 2, 3});
+
+    try {
+        list.at(5);
+        assert(true == false); // This line shouldn't be run
+    } catch (std::exception& exception) {
+        string message = exception.what();
+        assert(message == "Index's out of the range");
+    }
 }
