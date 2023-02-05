@@ -17,12 +17,18 @@ private:
     int _size = 0;
 public:
     bool isEmpty();
+    int getSize();
 
     void pushBack(T data);
     void pop();
 
     void erase(int start, int end);
 };
+
+template<typename T>
+int LinkedList<T>::getSize() {
+    return _size;
+}
 
 template<typename T>
 bool LinkedList<T>::isEmpty() {
