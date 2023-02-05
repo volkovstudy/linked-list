@@ -18,6 +18,8 @@ private:
 
     int _size = 0;
 public:
+    LinkedList();
+
     bool isEmpty();
     int getSize();
 
@@ -28,6 +30,14 @@ public:
 
     void erase(int start, int end);
 };
+
+template<typename T>
+LinkedList<T>::LinkedList() {
+    _head = new Node<T>;
+    _tail = new Node<T>;
+    _head = nullptr;
+    _tail = nullptr;
+}
 
 template<typename T>
 int LinkedList<T>::getSize() {
