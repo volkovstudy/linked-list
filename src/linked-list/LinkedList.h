@@ -115,7 +115,14 @@ void LinkedList<T>::pop() {
     delete _tail;
     _size--;
 
-    _tail = beforeTail;
+    if (_size == 1) {
+        _tail = nullptr;
+    } else if (_size == 0) {
+        _head = nullptr;
+        _tail = nullptr;
+    } else {
+        _tail = beforeTail;
+    }
 }
 
 template<typename T>
