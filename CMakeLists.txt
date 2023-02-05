@@ -10,3 +10,14 @@ file(GLOB_RECURSE main-sources
 )
 
 add_executable(linked-list src/main.cpp ${main-sources})
+
+# Testing
+enable_testing()
+
+include_directories(tests)
+
+set(test-sources ${main-sources})
+
+# LinkedList
+add_executable(linked-list-tests ${test-sources} tests/linked-list-tests/LinkedListTests.cpp)
+add_test(NAME LinkedList COMMAND linked-list-tests)
