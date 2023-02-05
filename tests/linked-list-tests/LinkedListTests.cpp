@@ -1,11 +1,16 @@
 #include <cassert>
 #include <iostream>
 
+#include <vector>
+#include <list>
+
 #include "linked-list/LinkedList.h"
 
 void shouldReturnTrueWhenListIsEmpty();
 void shouldReturnFalseWhenListIsNotEmpty();
 void shouldReturnThreeWhenInListThreeItems();
+
+void shouldReturnValueByIndex();
 
 int main() {
     shouldReturnTrueWhenListIsEmpty();
@@ -13,7 +18,20 @@ int main() {
 
     shouldReturnThreeWhenInListThreeItems();
 
+    shouldReturnValueByIndex();
+
     return 0;
+}
+
+template<class T>
+LinkedList<T>& givenListWithThreeItems(std::list<T> data) {
+    LinkedList<T>* list = new LinkedList<T>;
+
+    for (const T value: data) {
+        list->pushBack(value);
+    }
+
+    return *list;
 }
 
 void shouldReturnTrueWhenListIsEmpty() {
@@ -40,4 +58,12 @@ void shouldReturnThreeWhenInListThreeItems() {
     list.pushBack(3);
 
     assert(list.getSize() == 3);
+}
+
+void shouldReturnValueByIndex() {
+    LinkedList<int> list = givenListWithThreeItems(std::list<int>{1, 2, 3});
+
+    assert(list.at(0) == 1);
+    assert(list.at(1) == 2);
+    assert(list.at(2) == 3);
 }
