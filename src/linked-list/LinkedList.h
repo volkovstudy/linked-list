@@ -134,7 +134,7 @@ void LinkedList<T>::erase(int start, int end) {
     if (start > end) return;
 
     Node<T>* beforeStartNode = _head;
-    Node<T>* endNode = _head;
+    Node<T>* endNode = nullptr;
     Node<T>* currentNode = _head;
 
     int sizeBeforeErasing = _size;
@@ -164,7 +164,11 @@ void LinkedList<T>::erase(int start, int end) {
     }
 
     beforeStartNode->next = endNode;
-    endNode->previous = beforeStartNode;
+
+    if (endNode != nullptr)
+        endNode->previous = beforeStartNode;
+    else
+        _tail = beforeStartNode;
 }
 
 #endif
