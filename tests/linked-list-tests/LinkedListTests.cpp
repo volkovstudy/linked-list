@@ -18,6 +18,7 @@ void shouldDecrementSizeAndRemoveElementWhenPoppingItem();
 
 void shouldEraseStartOfList();
 void shouldEraseMiddleOfList();
+void shouldEraseEndOfList();
 
 int main() {
     shouldReturnTrueWhenListIsEmpty();
@@ -32,6 +33,7 @@ int main() {
 
     shouldEraseStartOfList();
     shouldEraseMiddleOfList();
+    shouldEraseEndOfList();
 
     return 0;
 }
@@ -128,4 +130,14 @@ void shouldEraseMiddleOfList() {
     assert(list.getSize() == 2);
     assert(list.at(0) == 1);
     assert(list.at(1 == 4));
+}
+
+void shouldEraseEndOfList() {
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3, 4});
+
+    list.erase(2,4);
+
+    assert(list.getSize() == 2);
+    assert(list.at(0) == 1);
+    assert(list.at(1) == 2);
 }
