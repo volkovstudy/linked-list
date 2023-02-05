@@ -1,7 +1,6 @@
 #include <cassert>
 #include <iostream>
 
-#include <vector>
 #include <list>
 
 #include "linked-list/LinkedList.h"
