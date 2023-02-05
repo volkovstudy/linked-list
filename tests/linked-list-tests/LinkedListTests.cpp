@@ -28,7 +28,7 @@ int main() {
 
 template<class T>
 LinkedList<T>& givenListWithItems(std::list<T> data) {
-    LinkedList<T>* list = new LinkedList<T>;
+    LinkedList<T>* list = new LinkedList<T>{};
 
     for (const T value: data) {
         list->pushBack(value);
