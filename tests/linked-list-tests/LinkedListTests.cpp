@@ -44,21 +44,13 @@ void shouldReturnTrueWhenListIsEmpty() {
 }
 
 void shouldReturnFalseWhenListIsNotEmpty() {
-    LinkedList<int> list;
-
-    list.pushBack(1);
-    list.pushBack(2);
-    list.pushBack(3);
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3});
 
     assert(list.isEmpty() == false);
 }
 
 void shouldReturnThreeWhenInListThreeItems() {
-    LinkedList<int> list;
-
-    list.pushBack(1);
-    list.pushBack(2);
-    list.pushBack(3);
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3});
 
     assert(list.getSize() == 3);
 }
