@@ -16,6 +16,7 @@ void shouldThrowExceptionWhenGettingValueWithInvalidIndex();
 
 void shouldDecrementSizeAndRemoveElementWhenPoppingItem();
 
+void shouldEraseStartOfList();
 void shouldEraseMiddleOfList();
 
 int main() {
@@ -29,6 +30,7 @@ int main() {
 
     shouldDecrementSizeAndRemoveElementWhenPoppingItem();
 
+    shouldEraseStartOfList();
     shouldEraseMiddleOfList();
 
     return 0;
@@ -106,6 +108,16 @@ void shouldDecrementSizeAndRemoveElementWhenPoppingItem() {
     checkWithList(givenListWithItems(std::list<int>{1, 2}));
     checkWithList(givenListWithItems(std::list<int>{1, 2, 3}));
     checkWithList(givenListWithItems(std::list<int>{1, 2, 3, 4}));
+}
+
+void shouldEraseStartOfList() {
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3, 4});
+
+    list.erase(0, 2);
+
+    assert(list.getSize() == 2);
+    assert(list.at(0) == 3);
+    assert(list.at(1) == 4);
 }
 
 void shouldEraseMiddleOfList() {
