@@ -1,6 +1,8 @@
 #ifndef LINKED_LIST_LINKEDLIST_H
 #define LINKED_LIST_LINKEDLIST_H
 
+#include <iostream>
+
 template<typename T>
 struct Node {
     T value;
@@ -19,7 +21,7 @@ public:
     bool isEmpty();
     int getSize();
 
-    T at(int index);
+    T at(unsigned int index);
 
     void pushBack(T data);
     void pop();
@@ -38,7 +40,10 @@ bool LinkedList<T>::isEmpty() {
 }
 
 template<typename T>
-T LinkedList<T>::at(int index) {
+T LinkedList<T>::at(unsigned int index) {
+    if (index >= _size)
+        throw std::invalid_argument("Index's out of the range");
+
     Node<T>* currentNode = _head;
 
     for (int i = 0; i < _size; ++i) {
@@ -48,7 +53,7 @@ T LinkedList<T>::at(int index) {
         currentNode = currentNode->next;
     }
 
-    return nullptr;
+    throw std::invalid_argument("Index isn't valid");
 }
 
 template<class T>
