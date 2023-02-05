@@ -19,6 +19,8 @@ public:
     bool isEmpty();
     int getSize();
 
+    T at(int index);
+
     void pushBack(T data);
     void pop();
 
@@ -33,6 +35,20 @@ int LinkedList<T>::getSize() {
 template<typename T>
 bool LinkedList<T>::isEmpty() {
     return _size == 0 && _head == nullptr;
+}
+
+template<typename T>
+T LinkedList<T>::at(int index) {
+    Node<T>* currentNode = _head;
+
+    for (int i = 0; i < _size; ++i) {
+        if (i == index) {
+            return currentNode->value;
+        }
+        currentNode = currentNode->next;
+    }
+
+    return nullptr;
 }
 
 template<class T>
