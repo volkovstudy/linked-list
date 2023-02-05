@@ -14,6 +14,8 @@ void shouldReturnThreeWhenInListThreeItems();
 void shouldReturnValueByIndex();
 void shouldThrowExceptionWhenGettingValueWithInvalidIndex();
 
+void shouldDecrementSizeAndRemoveElementWhenPoppingItem();
+
 int main() {
     shouldReturnTrueWhenListIsEmpty();
     shouldReturnFalseWhenListIsNotEmpty();
@@ -22,6 +24,8 @@ int main() {
 
     shouldReturnValueByIndex();
     shouldThrowExceptionWhenGettingValueWithInvalidIndex();
+
+    shouldDecrementSizeAndRemoveElementWhenPoppingItem();
 
     return 0;
 }
@@ -73,4 +77,29 @@ void shouldThrowExceptionWhenGettingValueWithInvalidIndex() {
         string message = exception.what();
         assert(message == "Index's out of the range");
     }
+}
+
+template<class T>
+void checkWithList(LinkedList<T>& list) {
+    int sizeBeforePopping = list.getSize();
+
+    list.pop();
+
+    assert(list.getSize() == sizeBeforePopping - 1);
+
+    try {
+        int indexOfDeletedItem = sizeBeforePopping - 1; // -1 because size's starting from 1, not 0
+        list.at(indexOfDeletedItem);
+        assert(true == false); // This line shouldn't be run
+    } catch (std::invalid_argument& exception) {
+        string message = exception.what();
+        assert(message == "Index's out of the range");
+    }
+}
+
+void shouldDecrementSizeAndRemoveElementWhenPoppingItem() {
+    checkWithList(givenListWithItems(std::list<int>{1}));
+    checkWithList(givenListWithItems(std::list<int>{1, 2}));
+    checkWithList(givenListWithItems(std::list<int>{1, 2, 3}));
+    checkWithList(givenListWithItems(std::list<int>{1, 2, 3, 4}));
 }
