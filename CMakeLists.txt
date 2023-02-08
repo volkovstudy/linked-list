@@ -28,7 +28,7 @@ include_directories(tests)
 
 set(test-sources ${main-sources})
 
-add_executable(unit-tests ${test-sources} tests/linked-list-tests/tests.cpp)
+add_executable(unit-tests ${test-sources} tests/linked-list-tests/LinkedListTests.cpp)
 target_link_libraries(unit-tests gtest gtest_main)
 
 add_test(unit-tests unit-tests)
