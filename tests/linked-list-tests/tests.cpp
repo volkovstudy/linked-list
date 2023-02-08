@@ -22,3 +22,9 @@ TEST(IsEmpty, HandlesEmptyList) {
 
     ASSERT_TRUE(list.isEmpty());
 }
+
+TEST(IsEmpty, HandlesNotEmptyList) {
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3});
+
+    ASSERT_FALSE(list.isEmpty());
+}
