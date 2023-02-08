@@ -11,13 +11,24 @@ file(GLOB_RECURSE main-sources
 
 add_executable(linked-list src/main.cpp ${main-sources})
 
-# Testing
-enable_testing()
 
+################################
+# GTest
+################################
+find_package(GTest REQUIRED)
+
+enable_testing()
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+
+################################
+# Unit Tests
+################################
 include_directories(tests)
 
 set(test-sources ${main-sources})
 
-# LinkedList
-add_executable(linked-list-tests ${test-sources} tests/linked-list-tests/LinkedListTests.cpp)
-add_test(NAME LinkedList COMMAND linked-list-tests)
+add_executable(unit-tests ${test-sources} tests/linked-list-tests/tests.cpp)
+target_link_libraries(unit-tests gtest gtest_main)
+
+add_test(unit-tests unit-tests)
