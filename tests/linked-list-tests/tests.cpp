@@ -80,3 +80,12 @@ TEST(Pop, HandlesListWithTwoItems) {
     ASSERT_EQ(list.getSize(), 1);
     ASSERT_THROW(list.at(1), invalid_argument);
 }
+
+TEST(Pop, HandlesListWithThreeItems) {
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3});
+
+    list.pop();
+
+    ASSERT_EQ(list.getSize(), 2);
+    ASSERT_THROW(list.at(2), invalid_argument);
+}
