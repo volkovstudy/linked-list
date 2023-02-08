@@ -89,3 +89,13 @@ TEST(Pop, HandlesListWithThreeItems) {
     ASSERT_EQ(list.getSize(), 2);
     ASSERT_THROW(list.at(2), invalid_argument);
 }
+
+TEST(Erase, ErasesStartOfList) {
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3, 4});
+
+    list.erase(0, 2);
+
+    ASSERT_EQ(list.getSize(), 2);
+    ASSERT_EQ(list.at(0), 3);
+    ASSERT_EQ(list.at(1), 4);
+}
