@@ -54,3 +54,11 @@ TEST(At, HandlesEmptyList) {
         FAIL() << "Expected std::invalid_argument but was thrown other";
     }
 }
+
+TEST(At, HandlesListWithItems) {
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3});
+
+    ASSERT_EQ(list.at(0), 1);
+    ASSERT_EQ(list.at(1), 2);
+    ASSERT_EQ(list.at(2), 3);
+}
