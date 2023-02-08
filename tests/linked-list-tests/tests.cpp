@@ -28,3 +28,9 @@ TEST(IsEmpty, HandlesNotEmptyList) {
 
     ASSERT_FALSE(list.isEmpty());
 }
+
+TEST(GetSize, HandlesEmptyList) {
+    LinkedList<int> list = givenListWithItems(std::list<int>{});
+
+    ASSERT_EQ(list.getSize(), 0);
+}
