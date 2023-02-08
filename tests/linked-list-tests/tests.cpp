@@ -40,3 +40,17 @@ TEST(GetSize, HandlesListWithThreeItems) {
 
     ASSERT_EQ(list.getSize(), 3);
 }
+
+TEST(At, HandlesEmptyList) {
+    LinkedList<int> list = givenListWithItems(std::list<int>{});
+
+    try {
+        list.at(0);
+        FAIL() << "Expected std::invalid_argument but wasn't thrown";
+    } catch (invalid_argument& exception) {
+        string message = exception.what();
+        ASSERT_EQ(message, "Index's out of the range");
+    } catch (...) {
+        FAIL() << "Expected std::invalid_argument but was thrown other";
+    }
+}
