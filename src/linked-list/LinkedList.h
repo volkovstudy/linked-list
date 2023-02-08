@@ -31,4 +31,6 @@ public:
     void erase(int start, int end);
 };
 
+#include "LinkedList.tpp"
+
 #endif
