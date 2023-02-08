@@ -34,3 +34,9 @@ TEST(GetSize, HandlesEmptyList) {
 
     ASSERT_EQ(list.getSize(), 0);
 }
+
+TEST(GetSize, HandlesListWithThreeItems) {
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3});
+
+    ASSERT_EQ(list.getSize(), 3);
+}
