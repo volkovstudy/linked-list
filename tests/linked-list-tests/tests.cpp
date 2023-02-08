@@ -16,3 +16,9 @@ LinkedList<T>& givenListWithItems(list<T> data) {
 
     return *list;
 }
+
+TEST(IsEmpty, HandlesEmptyList) {
+    LinkedList<int> list = givenListWithItems(std::list<int>{});
+
+    ASSERT_TRUE(list.isEmpty());
+}
