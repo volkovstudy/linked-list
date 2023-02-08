@@ -26,7 +26,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 ################################
 include_directories(tests)
 
-add_executable(unit-tests ${main-sources} tests/linked-list-tests/LinkedListTests.cpp)
-target_link_libraries(unit-tests gtest gtest_main)
+add_executable(linked-list-tests ${main-sources} tests/linked-list-tests/LinkedListTests.cpp)
+target_link_libraries(linked-list-tests gtest gtest_main)
 
-add_test(unit-tests unit-tests)
+add_test(NAME LinkedList COMMAND linked-list-tests)
