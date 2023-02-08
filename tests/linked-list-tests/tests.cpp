@@ -109,3 +109,13 @@ TEST(Erase, ErasesMiddleOfList) {
     ASSERT_EQ(list.at(0), 1);
     ASSERT_EQ(list.at(1), 4);
 }
+
+TEST(Erase, ErasesEndOfList) {
+    LinkedList<int> list = givenListWithItems(std::list<int>{1, 2, 3, 4});
+
+    list.erase(2, 4);
+
+    ASSERT_EQ(list.getSize(), 2);
+    ASSERT_EQ(list.at(0), 1);
+    ASSERT_EQ(list.at(1), 2);
+}
